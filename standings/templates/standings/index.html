@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+<link rel="icon" type="image/ico" href="{% static 'images/mepco.ico' %}" />
+<title>Scorecard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/aos.css' %}" rel='stylesheet prefetch' type="text/css" media="all" />
+<link href="{% static 'css/colorfulTab.min.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/style1.css' %}" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}">
+</head>
+<body>
+		<div class="wrap">
+				<nav class="navbar navbar-expand-lg navbar-light shift">
+				  <div class="logo">
+					<h1>
+					  <a class="navbar-brand">
+						<img src="{% static 'images/mepco.png' %}" alt="logo" height=60>
+					  </a>
+					</h1>
+				  </div>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mx-auto">
+					  <li class="nav-item">
+						<a class="nav-link " href="/home" style="color: #000;">Home
+						  <span class="sr-only">(current)</span>
+						</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link " href="/results" style="color: #000;"
+						  >Fixtures and Results</a>
+						  </li>
+						
+						  <li class=" nav-item">
+						  <a class="nav-link active" href="/standings" style="color: #000;">Overall Standings</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="/admin" style="color: #000;">Login</a>
+					  </li>
+					</ul>
+					<!-- Social Icons -->
+			
+					<!-- //Social Icons -->
+				  </div>
+				</nav>
+			  </div><hr><br><br>
+<section class="results-w3ls">
+	<div class="container">
+		<h3 class="text-center" data-aos="zoom-in">Scorecard</h3><br>
+		<div class="colorful-tab-wrapper" id="colorful" data-aos="flip-up">
+			<ul class="colorful-tab-menu">
+				<li class="colorful-tab-menu-item active" tab-color="#1ca0de"><a href="#clr-0"> <span>Men</span><div class="clearfix"></div></a></li>
+				<li class="colorful-tab-menu-item" tab-color="#1ca0de"><a href="#clr-1"> <span>Women</span><div class="clearfix"></div></a></li>
+				
+			</ul>
+			<div class="colorful-tab-container">  
+				<div class="colorful-tab-content active" id="clr-0">  
+					<div class="table-responsive">          
+						<table class="table">
+							<thead>
+								<tr>
+									<th><h4>Team Name</h4></th>
+									<th><h4>Cricket</h4></th>
+									<th><h4>Hockey</h4></th>
+									<th><h4>Badminton</h4></th>
+									<th><h4>Table Tennis</h4></th>
+									<th><h4>Kho-kho</h4></th>
+									<th><h4>Ball Badminton</h4></th>
+									<th><h4>Kabadi</h4></th>
+									<th><h4>Chess</h4></th>
+									<th><h4>VolleyBall</h4></th>
+									<th><h4>BasketBall</h4></th>
+									<th><h4>FootBall</h4></th>
+									<th><h4>Other</h4></th>
+									<th><h4>Total</h4></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Coral</td>
+									{% for standing in standings %}
+										{% if standing.sport == 'cricket' and standing.gender == 'M' %}
+											{% if standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'hockey' and standing.gender == 'M' %}
+											{% if standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'kabaddi' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.9 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'football' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.10 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.11 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{mteam.coral}}</td>
+								</tr>								
+								<tr>
+									<td>Diamond</td>
+									{% for standing in standings %}
+										{% if standing.sport == 'cricket' and standing.gender == 'M' %}
+											{% if standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'hockey' and standing.gender == 'M' %}
+											{% if standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'kabaddi' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.9 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'football' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.10 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.11 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{mteam.diamond}}</td>
+								</tr>
+								<tr>
+									<td>Emerald</td>
+									{% for standing in standings %}
+										{% if standing.sport == 'cricket' and standing.gender == 'M' %}
+											{% if standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'hockey' and standing.gender == 'M' %}
+											{% if standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'kabaddi' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.9 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'football' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.10 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.11 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{mteam.emerald}}</td>
+								</tr>
+								<tr>
+									<td>Pearl</td>
+									{% for standing in standings %}
+										{% if standing.sport == 'cricket' and standing.gender == 'M' %}
+											{% if standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'hockey' and standing.gender == 'M' %}
+											{% if standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'kabaddi' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.9 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'football' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.10 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'pearl' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'pearl' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'pearl' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.11 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{mteam.pearl}}</td>
+								</tr>
+								<tr>
+									<td>Ruby</td>
+									{% for standing in standings %}
+										{% if standing.sport == 'cricket' and standing.gender == 'M' %}
+											{% if standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'hockey' and standing.gender == 'M' %}
+											{% if standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'kabaddi' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.9 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'football' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.10 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.11 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{mteam.ruby}}</td>
+								</tr>
+								<tr>
+									<td>Saphhire</td>
+									{% for standing in standings %}
+										{% if standing.sport == 'cricket' and standing.gender == 'M' %}
+											{% if standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'hockey' and standing.gender == 'M' %}
+											{% if standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'kabaddi' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.9 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'football' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.10 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'M' %}
+											{% if  standing.team1 == 'sapphire' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'sapphire' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'sapphire' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if male.11 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{mteam.sapphire}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="colorful-tab-content" id="clr-1"> 
+					<div class="table-responsive">          
+						<table class="table">
+							<thead>
+								<tr>
+									<th><h4>Team Name</h4></th>
+									<th><h4>BasketBall</h4></th>
+									<th><h4>Chess</h4></th>
+									<th><h4>Badminton</h4></th>
+									<th><h4>Table Tennis</h4></th>
+									<th><h4>Kho-kho</h4></th>
+									<th><h4>Throw Ball</h4></th>
+									<th><h4>Ball Badminton</h4></th>
+									<th><h4>VolleyBall</h4></th>
+									<th><h4>Other</h4></th>
+									<th><h4>Total</h4></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Coral</td>
+																		{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'F' %}
+											{% if standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'F' %}
+											{% if standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'throwball' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'coral' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'coral' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'coral' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{fteam.coral}}</td>
+								</tr>								
+								<tr>
+									<td>Diamond</td>
+									{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'F' %}
+											{% if standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'F' %}
+											{% if standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'throwball' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'diamond' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'diamond' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'diamond' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{fteam.diamond}}</td>
+								</tr>
+								<tr>
+									<td>Emerald</td>
+																		{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'F' %}
+											{% if standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'F' %}
+											{% if standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'throwball' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'emerald' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'emerald' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'emerald' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{fteam.emerald}}</td>
+								</tr>
+								<tr>
+									<td>Ruby</td>
+										{% for standing in standings %}
+										{% if standing.sport == 'basketball' and standing.gender == 'F' %}
+											{% if standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.0 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'chess' and standing.gender == 'F' %}
+											{% if standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.1 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'badmiton' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.2 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'tabletennis' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.3 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'khokho' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.4 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'throwball' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.5 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'ballbadmiton' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.6 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'volleyball' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.7 == 0 %}
+											<td>-</td>
+									{% endif %}
+									{% for standing in standings %}
+										{% if standing.sport == 'other' and standing.gender == 'F' %}
+											{% if  standing.team1 == 'ruby' %}
+												<td>{{standing.team1_score}}</td>
+											{% elif  standing.team2 == 'ruby' %}
+												<td>{{standing.team2_score}}</td>
+											{% elif  standing.team3 == 'ruby' %}
+												<td>{{standing.team3_score}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+									{% if female.8 == 0 %}
+											<td>-</td>
+									{% endif %}
+									<td>{{fteam.ruby}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>	
+</section>
+<br /><br /><br /><hr><br>
+<section class="results-w3ls" >
+	<div class="container">
+		<h3 class="text-center" data-aos="zoom-in">Men Ranking</h3><br>
+		<div class="colorful-tab-wrapper" id="colorful" data-aos="flip-up" style="background:#1ca0de;">
+			<div class="colorful-tab-container">  
+				<div class="colorful-tab-content active" id="boyrank">  
+					<div class="table-responsive">          
+						<table class="table text-capitalize" >
+							<thead>
+								<tr>
+								<th>SNo</th>
+								<th>Team Name</th>
+								<th>Score</th>
+								</tr>
+							</thead>
+							  <tr>
+								<td>1</td>
+								<td>{{mranking.0.0}}</td>
+								<td>{{mranking.0.1}}</td>
+							  </tr>
+							  <tr>
+								<td>2</td>
+								<td>{{mranking.1.0}}</td>
+								<td>{{mranking.1.1}}</td>
+							  </tr>
+							  <tr>
+								<td>3</td>
+								<td>{{mranking.2.0}}</td>
+								<td>{{mranking.2.1}}</td>
+							  </tr>
+							  <tr>
+								<td>4</td>
+								<td>{{mranking.3.0}}</td>
+								<td>{{mranking.3.1}}</td>
+							  </tr>
+							  <tr>
+								<td>5</td>
+								<td>{{mranking.4.0}}</td>
+								<td>{{mranking.4.1}}</td>
+							  </tr>
+							  <tr>
+								<td>6</td>
+								<td>{{mranking.5.0}}</td>
+								<td>{{mranking.5.1}}</td>
+							  </tr>
+						</table>
+					</div>
+			</div>
+				
+			</div>
+		</div>
+	</div>
+</section><br /><br /><br /><hr><br>
+<section class="results-w3ls">
+	<div class="container">
+		<h3 class="text-center" data-aos="zoom-in">Women Ranking</h3><br>
+		<div class="colorful-tab-wrapper" id="colorful" data-aos="flip-up" style="background:#1ca0de;">
+			<div class="colorful-tab-container">  
+				<div class="colorful-tab-content active" >  
+					<div class="table-responsive">  
+						<div class="colorful-tab-content active" id="girlrank">  
+					<div class="table-responsive">          
+						<table class="table text-capitalize">
+							<thead>
+								<tr>
+								<th>SNo</th>
+								<th>Team Name</th>
+								<th>Score</th>
+								</tr>
+							</thead>
+							  <tr>
+								<td>1</td>
+								<td>{{franking.0.0}}</td>
+								<td>{{franking.0.1}}</td>
+							  </tr>
+							  <tr>
+								<td>2</td>
+								<td>{{franking.1.0}}</td>
+								<td>{{franking.1.1}}</td>
+							  </tr>
+							  <tr>
+								<td>3</td>
+								<td>{{franking.2.0}}</td>
+								<td>{{franking.2.1}}</td>
+							  </tr>
+							  <tr>
+								<td>4</td>
+								<td>{{franking.3.0}}</td>
+								<td>{{franking.3.1}}</td>
+							  </tr>
+						</table>
+					</div>
+				</div>
+				</div>
+</div>
+</div>
+</div>
+</section>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/SmoothScroll.min.js' %}"></script>
+<script src="{% static 'js/top.js' %}"></script> 
+<script src="{% static 'js/modernizr.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/aos2.js' %}"></script>
+<!-- js for table -->
+<script type="text/javascript" src="{% static 'js/colorfulTab.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#colorful").colorfulTab();   
+    });
+</script>
+<!-- //js for table -->
+<!-- /js files -->
+</body>

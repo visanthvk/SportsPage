@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/ico" href="{% static 'images/mepco.ico' %}" />
+  <title>Fixtures</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
+  <style type="text/css">
+  
+
+
+    .navbar-brand {
+      width: 70px;
+      height: 50px;
+      background: transparent;
+
+    }
+
+    .nav-tabs {
+      display: inline-block;
+      border-bottom: none;
+      padding-top: 15px;
+      font-weight: bold;
+      font-size: 20px;
+
+    }
+
+    .nav-tabs>li>a,
+    .nav-tabs>li>a:hover,
+    .nav-tabs>li>a:focus,
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:hover,
+    .nav-tabs>li.active>a:focus {
+      border: none;
+      border-radius: 0;
+
+    }
+
+    .nav-list {
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+    }
+
+    .nav-list>li {
+      padding: 20px 15px 15px;
+      border-left: 1px solid #eee;
+      font-size: 15px;
+
+
+
+    }
+
+    .nav-list>li:last-child {
+      border-right: 1px solid #eee;
+      font-size: 15px;
+    }
+
+    .nav-list>li>a:hover {
+      text-decoration: none;
+
+    }
+
+    .nav-list>li>a>span {
+      display: block;
+      font-weight: bold;
+      text-transform: uppercase;
+
+    }
+
+    .mega-dropdown {
+      position: static !important;
+    }
+
+    .mega-dropdown-menu {
+      padding: 20px 15px 15px;
+      text-align: center;
+      width: 100%;
+    }
+
+    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700");
+
+    body {
+      font-family: 'source sans pro', sans-serif;
+    }
+
+    .bracket {
+      padding-: 40px;
+      margin-left: 5px;
+      border: 1px solid black;
+    }
+
+    .bracket {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      justify-content: space-around;
+      align-content: center;
+    }
+
+    .match {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 240px;
+      max-width: 240px;
+      height: 62px;
+      margin: 12px 24px 12px 0;
+    }
+
+    .match .match-top {
+      border-radius: 2px 2px 0 0;
+    }
+
+    .match .match-bottom {
+      border-radius: 0 0 2px 2px;
+    }
+
+    .match .team {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      position: relative;
+    }
+
+    .match .team span {
+      padding-left: 8px;
+    }
+
+    .match .team span:last-child {
+      padding-right: 8px;
+    }
+
+    .match .team .score {
+      margin-left: auto;
+    }
+
+    .match .team:first-child {
+      margin-bottom: -1px;
+    }
+
+    .match-lines {
+      display: block;
+      position: absolute;
+      top: 50%;
+      bottom: 0;
+      margin-top: 0px;
+      right: -1px;
+    }
+
+    .match-lines .line {
+      background: red;
+      position: absolute;
+    }
+
+    .match-lines .line.one {
+      height: 1px;
+      width: 12px;
+    }
+
+    .match-lines .line.two {
+      height: 44px;
+      width: 1px;
+      left: 11px;
+    }
+
+    .match-lines.alt {
+      left: -12px;
+    }
+
+    .match:nth-child(even) .match-lines .line.two {
+      transform: translate(0, -100%);
+    }
+
+    .column:first-child .match-lines.alt {
+      display: none;
+    }
+
+    .column:last-child .match-lines {
+      display: none;
+    }
+
+    .column:last-child .match-lines.alt {
+      display: block;
+    }
+
+    .column:nth-child(2) .match-lines .line.two {
+      height: 88px;
+    }
+
+    .column:nth-child(3) .match-lines .line.two {
+      height: 175px;
+    }
+
+    .column:nth-child(4) .match-lines .line.two {
+      height: 262px;
+    }
+
+    .column:nth-child(5) .match-lines .line.two {
+      height: 349px;
+    }
+
+    .theme-dark {
+      background: #0e1217;
+      border-color: #040607;
+    }
+
+    .theme-dark .match-lines .line {
+      background: #36404e;
+    }
+
+    .theme-dark .team {
+      background: #182026;
+      border-color: #232c36;
+      color: #6b798c;
+    }
+
+    .theme-dark .winner-top .match-top,
+    .theme-dark .winner-bottom .match-bottom {
+      background: #232c36;
+      color: #e3e8ef;
+      border-color: #36404e;
+      z-index: 1;
+    }
+
+    .theme-dark .winner-top .match-top .score,
+    .theme-dark .winner-bottom .match-bottom .score {
+      color: #03d9ce;
+    }
+
+    .theme-dark .match .seed {
+      font-size: 12px;
+      min-width: 10px;
+    }
+
+    .theme-dark .match .score {
+      font-size: 14px;
+    }
+
+    .theme-dark-trendy {
+      background: #2b5876;
+      background: -webkit-linear-gradient(to right, #171721, #122b29);
+      background: linear-gradient(to right, #171721, #122b29);
+      border-color: #040607;
+    }
+
+    .theme-dark-trendy .match-lines .line {
+      background: #36404e;
+    }
+
+    .theme-dark-trendy .team {
+      background: rgba(50, 54, 65, 0.4);
+      color: #6b798c;
+      border: 2px solid transparent;
+    }
+
+    .theme-dark-trendy .team:first-child {
+      margin-bottom: 2px;
+    }
+
+    .theme-dark-trendy .team:last-child {
+      margin-top: 2px;
+    }
+
+    .theme-dark-trendy .winner-top .match-top,
+    .theme-dark-trendy .winner-bottom .match-bottom {
+      background: #323641;
+      color: #e3e8ef;
+      z-index: 1;
+    }
+
+    .theme-dark-trendy .winner-top .match-top .score,
+    .theme-dark-trendy .winner-bottom .match-bottom .score {
+      color: #03d9ce;
+    }
+
+    .theme-dark-trendy .match {
+      margin-right: 48px;
+    }
+
+    .theme-dark-trendy .match .team .name {
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .theme-dark-trendy .match .seed {
+      display: none;
+    }
+
+    .theme-dark-trendy .match .match-top {
+      border-radius: 0;
+    }
+
+    .theme-dark-trendy .match .match-bottom {
+      border-radius: 0;
+    }
+
+    .theme-dark-trendy .match-lines {
+      opacity: 0.75;
+      right: -12px;
+    }
+
+    .theme-dark-trendy .match-lines .line {
+      background: #03d9ce;
+    }
+
+    .theme-dark-trendy .match-lines.alt {
+      left: -24px;
+    }
+
+    .theme-dark-trendy .team {
+      overflow: hidden;
+    }
+
+    .theme-dark-trendy .score:before {
+      opacity: .25;
+      position: absolute;
+      z-index: 1;
+      content: '';
+      display: block;
+      background: black;
+      min-height: 50px;
+      min-width: 70px;
+      transform: translate(-12px, 0) rotate(25deg);
+    }
+
+    .disable-image .image,
+    .disable-seed .seed,
+    .disable-name .name,
+    .disable-score .score {
+      display: none !important;
+    }
+
+    .disable-borders {
+      border-width: 0px !important;
+    }
+
+    .disable-borders .team {
+      border-width: 0px !important;
+    }
+
+    .disable-seperator .match-top {
+      border-bottom: 0px !important;
+    }
+
+    .disable-seperator .match-bottom {
+      border-top: 0px !important;
+    }
+
+    .disable-seperator .team:first-child {
+      margin-bottom: 0px;
+    }
+
+    .theme-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 24px;
+      border: 1px solid #c0cfdd;
+      background: #e1e8ef;
+    }
+
+    .theme-switcher h2 {
+      color: #6b798c;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin: 0 0 12px 0;
+    }
+
+    .theme-switcher button {
+      line-height: 1em;
+      font-size: 16px;
+      padding: 6px 10px;
+    }
+
+    td {
+      height: 100px;
+      vertical-align: bottom;
+      padding: 5px;
+    }
+
+    #response {
+      font-family: courier-new, courier;
+    }
+
+    #podium0,
+    #podium1,
+    #podium2 {
+
+      width: 100px;
+      background: gray;
+    }
+
+    #podium0 {
+      /* gold */
+      height: 150px;
+      background: gold;
+    }
+
+    #podium1 {
+      /* silver */
+      height: 100px;
+      background: silver;
+    }
+
+    #podium2 {
+      /* bronze */
+      height: 50px;
+      background: brown;
+    }
+  </style>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.bracket').addClass('theme-dark-trendy');
+    });
+  </script>
+  <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <title>Mepco Annual Sports Meet</title>
+  <!-- Meta tag Keywords -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="keywords" content="Skater Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+  <script>
+    addEventListener("load", function () {
+      setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+      window.scrollTo(0, 1);
+    }
+  </script>
+  <!--// Meta tag Keywords -->
+
+  <!-- Custom-Files -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <!-- Bootstrap-Core-CSS -->
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}" type="text/css" media="all" />
+  <!-- Style-CSS -->
+  <link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}">
+  <!-- Font-Awesome-Icons-CSS -->
+  <!-- //Custom-Files -->
+
+  <!-- Web-Fonts -->
+
+  <!-- //Web-Fonts -->
+</head>
+
+<body >
+  <div class="wrap">
+    <nav class="navbar navbar-expand-lg navbar-light shift">
+      <div class="logo">
+        <h1>
+          <a class="navbar-brand">
+
+            <img src="{% static 'images/mepco.png' %}" alt="logo" height=60>
+          </a>
+        </h1>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/home"style="color: #000;">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/results" style="color: #000;"
+              >Fixtures and Results</a>
+              </li>
+            
+              <li class=" nav-item">
+              <a class="nav-link" href="/standings" style="color: #000;">Overall Standings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin" style="color: #000;">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+<div style="background:#fff;">
+<nav class="navbar navbar-default" role="navigation" style="background:#fff;">
+  <div class="container-fluid" >
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active"><a href="#men" role="tab" data-toggle="tab">Men</a></li>
+      <li><a href="#women" role="tab" data-toggle="tab">Women</a></li>
+
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="men">
+        <ul class="nav-list list-inline">
+          <li class="sport"><a href="{% url 'display' game='menbadmiton' %}"><img src="{% static 'gameimages/badminton.png' %}"
+                height="140px" width="140px"><span>Badminton </span></a></li>
+          <li class="sport"><a href="{% url 'display' game='menballbadmiton'%}"><img src="{% static 'gameimages/ballbad.jpg' %}"
+                height="140px" width="140px"><span>Ball Badminton </span></a></li>
+          <li class="sport"><a href="{% url 'display' game='menbasketball'%}"><img src="{% static 'gameimages/m_basketball.jpg '%}"
+                height="140px" width="140px"><span>Basketball</span></a></li>
+          <li class="sport"><a href="{% url 'display' game='menchess'%}"><img src="{% static 'gameimages/chess.png' %}"
+                height="140px" width="140px"><span>Chess</span></a></li>
+          <li class="sport"><a href="{% url 'display' game='mencricket'%}"><img src="{% static 'gameimages/cricket.jpg' %}"
+                height="140px" width="140px"><span>Cricket</span></a></li>
+          <li class="sport"><a href="{% url 'display' game='menfootball'%}"><img src="{% static 'gameimages/football.jpg' %}"
+                height="140px" width="140px"> <span>Football</span></a></li>
+          <li class="sport"><a href="{% url 'display' game='menhandball'%}"><img src="{% static 'gameimages/m_handball.png' %}"
+                height="140px" width="140px"> <span>Handball</span></a></li>
+          
+          <li class="sport"><a href="{% url 'display' game='menhockey'%}"><img src="{% static 'gameimages/hockey.jpg' %}"
+                height="140px" width="140px"> <span>Hockey</span></a></li>
+          <li class="sport"><a href="{% url 'display' game='menkabaddi'%}"><img src="{% static 'gameimages/kabbadi.jpg' %}"
+                height="140px" width="140px"> <span>Kabbadi</span></a></li>
+          <li class="sport"><a href="{% url 'display' game='menkhokho'%}"><img src="{% static 'gameimages/khokho.png' %}"
+                height="140px" width="140px"> <span>Kho-Kho</span></a></li>
+          <li class="sport"><a href="{% url 'display' game='mentabletennis'%}"><img src="{% static 'gameimages/tt.jpg'%}"
+                height="140px" width="140px"> <span>Table Tennis</span></a></li>
+          <li class="sport"><a href="{% url 'display' game='menvolleyball'%}"><img src="{% static 'gameimages/volleyball.png' %}"
+                height="140px" width="140px"> <span>Volleyball</span></a></li>
+
+        </ul>
+      </div>
+      <div class="tab-pane" id="women">
+        <ul class="nav-list list-inline">
+          <li class="wsport"><a href="{% url 'display' game='wenbadmiton'%}"><img src="{% static 'gameimages/g_badminton.png'%}"
+                height="140px" width="140px"><span>Badminton</span></a></li>
+          <li class="wsport"><a href="{% url 'display' game='wenballbadmiton'%}"><img src="{% static 'gameimages/g_ballbadminton.jpg'%}"
+                height="140px" width="140px"><span>Ball Badminton</span></a></li>
+          <li class="wsport"><a href="{% url 'display' game='wenbasketball'%}"><img src="{% static 'gameimages/g_basket.png' %}"
+                height="140px" width="140px"><span>Basketball</span></a></li>
+          <li class="wsport"><a href="{% url 'display' game='wenchess'%}"><img src="{% static 'gameimages/chess.png' %}"
+                height="140px" width="140px"><span>Chess</span></a></li>
+          <li class="wsport"><a href="{% url 'display' game='wenkhokho'%}"><img src="{% static 'gameimages/khokho.png' %}"
+                height="140px" width="140px"><span>Kho-Kho</span></a></li>
+          <li class="wsport"><a href="{% url 'display' game='wentabletennis'%}"><img src="{% static 'gameimages/g_tt.jpg' %}"
+                height="140px" width="140px"><span>Table-Tennis</span></a></li>
+          <li class="wsport"><a href="{% url 'display' game='wenvolleyball'%}"><img src="{% static 'gameimages/g_volley.jpg' %}"
+                height="140px" width="140px"><span>Volleyball</span></a></li>
+          <li class="wsport"><a href="{% url 'display' game='wenthrowball'%}"><img src="{% static 'gameimages/throw.jpg'%}"
+                height="140px" width="140px"><span>Throwball</span></a></li>
+        </ul>
+      </div>
+
+
+    </div>
+    <!-- Nav tabs -->
+
+  </div>
+  </li>
+  </ul>
+
+
+  </div><!-- /.navbar-collapse -->
+
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+</div>
+{% block content %}
+
+{% endblock %}
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    $('.sport').click(function () {
+      $('#fixture_women').hide("slow");
+      $('#fixture_men').show("slow");
+      // Alternative animation for example
+      // slideToggle("fast");
+    });
+
+  });
+  $(document).ready(function () {
+
+    $('.wsport').click(function () {
+      $('#fixture_men').hide("slow");
+
+      $('#fixture_women').show("slow");
+      // Alternative animation for example
+      // slideToggle("fast");
+    });
+  });
+
+  $(document).ready(function () {
+    $(".dropdown").hover(
+      function () {
+        $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+        $(this).toggleClass('open');
+      },
+      function () {
+        $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+        $(this).toggleClass('open');
+      }
+    );
+  });
+</script>
+<script type="text/javascript" link="js/index.js"></script>
+<script type="text/javascript" link="js/jquery-3.3.1.min.js"></script>
+</body>
+</html>

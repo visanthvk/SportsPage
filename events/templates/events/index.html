@@ -1,0 +1,168 @@
+{% extends 'events/layout.html' %}
+{% load static %}
+{% block content %}
+
+
+<div>
+  <h3>Events</h3>
+
+  <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#a" data-toggle="tab">Einstein Throphy</a></li>
+      <li><a href="#b" data-toggle="tab">Lions Club </a></li>
+    </ul>
+    <hr>
+    <div class="tab-content">
+      <div class="tab-pane active" id="a">
+        <br> <br><br><br>
+        <p style="width : 100%;">
+          Our College Students participated in the<b> Einstein Sports League – 2019</b>, organised by Einstein College
+          of
+          Engineering, Tirunelveli from 01/02/19 to 03/02/19.Totally 51 Girls and 74 Boys were participated in the 11
+          Various Games. Total Cash <b>Price Rs 10,000</b> was awarded.
+        </p>
+        <div></div>
+
+        <br>
+        <br>
+
+
+        <div style="width : 50%; float: left; ">
+          <div class="img-thumbnail">
+            <img src="{% static 'img/p1.jpg' %}" alt="" height="300">
+            <br><br>
+          </div>
+
+          <table class="table table-striped">
+            <tr>
+              <th>Game</th>
+              <th>Category</th>
+              <th>Position</th>
+            </tr>
+            <tr>
+              <td>BasketBall</td>
+              <td>Men</td>
+              <td>Runner</td>
+            </tr>
+            <tr>
+              <td>Kho-Kho</td>
+              <td>Men</td>
+              <td>Runner</td>
+            </tr>
+            <tr>
+              <td>Cricket</td>
+              <td>Men</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>FootBall</td>
+              <td>Men</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>VolleyBall</td>
+              <td>Men</td>
+              <td>Third</td>
+            </tr>
+          </table>
+
+        </div>
+
+        <div>
+
+          <div style="width : 50%; float :left; ">
+            <div class="img-thumbnail">
+
+              <img src="{% static 'img/pic.jpg' %}" alt="" height="300">
+              <br>
+              <br>
+            </div>
+            <table class="table table-striped">
+              <tr>
+                <th>Game</th>
+                <th>Category</th>
+                <th>Position</th>
+              </tr>
+              <tr>
+                <td>BasketBall</td>
+                <td>Women</td>
+                <td>Winner</td>
+              </tr>
+              <tr>
+                <td>VolleyBall</td>
+                <td>Women</td>
+                <td>Winner</td>
+              </tr>
+              <tr>
+                <td>Kho-Kho</td>
+                <td>Women</td>
+                <td>Third</td>
+              </tr>
+              <tr>
+                <td>Kabaddi</td>
+                <td>Women</td>
+                <td>Third</td>
+              </tr>
+              <tr>
+                <td>ThrowBall</td>
+                <td>Women</td>
+                <td>Third</td>
+              </tr>
+            </table>
+
+          </div>
+        </div>
+        <hr>
+        <p><br> Our college Staff VolleyBall Team Secured <b>I<sup>st</sup> place</b> in the <b>Einstein Sports league
+            -2019,Staff Volleyball Tournament</b> Organised by
+          Einstein College of Engineering ,Tirunelveli on 02/02/19 </p>
+
+        <br><br>
+        <div class="img-thumbnail">
+
+            <img src="{% static 'img/staff.png' %}" alt="" height="400" width="540">
+            <br>
+            <br>
+            <br>
+          </div>
+
+      </div>
+
+
+      <div class="tab-pane" id="b">
+        <br><br><br>
+        <p>Mepco Schlenk Engineering College,Sivakasi and Lion's Club Sivakasi jointly organized the <b>Open 3<sup>rd</sup>
+            State Level Badminton Championship</b> in our college Indooe Stadium during 10<sup>th</sup>january 2019 -
+          13<sup>th</sup>january
+          2019.Totally 546 participants in 23 events wereparticipated in this tournament </p>
+        <p>Our College <b>Badminton Women Team</b>had won the <b>III<sup>rd</sup>place</b>in under 21 Girls Doubles
+          category in this tournament</p>
+
+        <div>
+          <table class="table table-striped">
+            <tr>
+              <th>S.No</th>
+              <th>Player Name</th>
+              <th>Year/Dept</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>R.Lakshmi Preethi</td>
+              <td>IV / CSE</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>E.S.Monica Seles</td>
+              <td>III / EEE</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane" id="c">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

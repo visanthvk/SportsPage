@@ -1,0 +1,443 @@
+<html>
+{% load static %}
+<head>
+<link rel="icon" type="image/ico" href="{% static 'images/mepco.ico' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css\bootstrap.min.css' %}">
+<style type="text/css">
+.theme-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 24px;
+      border: 1px solid #c0cfdd;
+      background: #e1e8ef;
+    }
+
+    .theme-switcher h2 {
+      color: #6b798c;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin: 0 0 12px 0;
+    }
+
+    .theme-switcher button {
+      line-height: 1em;
+      font-size: 16px;
+      padding: 6px 10px;
+    }
+
+    td {
+      height: 100px;
+      vertical-align: bottom;
+      padding: 5px;
+    }
+
+    #response {
+      font-family: courier-new, courier;
+    }
+    .navbar-brand {
+      width: 70px;
+      height: 50px;
+      background: transparent;
+
+    }
+
+    .nav-tabs {
+      display: inline-block;
+      border-bottom: none;
+      padding-top: 15px;
+      font-weight: bold;
+      font-size: 20px;
+
+    }
+
+    .nav-tabs>li>a,
+    .nav-tabs>li>a:hover,
+    .nav-tabs>li>a:focus,
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:hover,
+    .nav-tabs>li.active>a:focus {
+      border: none;
+      border-radius: 0;
+
+    }
+
+    .nav-list {
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+    }
+
+    .nav-list>li {
+      padding: 20px 15px 15px;
+      border-left: 1px solid #eee;
+      font-size: 15px;
+
+
+
+    }
+    
+
+    .nav-list>li:last-child {
+      border-right: 1px solid #eee;
+      font-size: 15px;
+    }
+
+    .nav-list>li>a:hover {
+      text-decoration: none;
+
+    }
+
+    .nav-list>li>a>span {
+      display: block;
+      font-weight: bold;
+      text-transform: uppercase;
+
+    }
+
+    .mega-dropdown {
+      position: static !important;
+    }
+
+    .mega-dropdown-menu {
+      padding: 20px 15px 15px;
+      text-align: center;
+      width: 100%;
+    }
+
+    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700");
+
+    body {
+      font-family: 'source sans pro', sans-serif;
+    }
+
+    .bracket {
+      padding-: 40px;
+      margin-left: 5px;
+      border: 1px solid black;
+    }
+
+    .bracket {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      justify-content: space-around;
+      align-content: center;
+    }
+
+    .match {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 240px;
+      max-width: 240px;
+      height: 62px;
+      margin: 12px 24px 12px 0;
+    }
+
+    .match .match-top {
+      border-radius: 2px 2px 0 0;
+    }
+
+    .match .match-bottom {
+      border-radius: 0 0 2px 2px;
+    }
+
+    .match .team {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      position: relative;
+    }
+
+    .match .team span {
+      padding-left: 8px;
+    }
+
+    .match .team span:last-child {
+      padding-right: 8px;
+    }
+
+    .match .team .score {
+      margin-left: auto;
+    }
+
+    .match .team:first-child {
+      margin-bottom: -1px;
+    }
+
+    .match-lines {
+      display: block;
+      position: absolute;
+      top: 50%;
+      bottom: 0;
+      margin-top: 0px;
+      right: -1px;
+    }
+
+    .match-lines .line {
+      background: red;
+      position: absolute;
+    }
+
+    .match-lines .line.one {
+      height: 1px;
+      width: 12px;
+    }
+
+    .match-lines .line.two {
+      height: 44px;
+      width: 1px;
+      left: 11px;
+    }
+
+    .match-lines.alt {
+      left: -12px;
+    }
+
+    .match:nth-child(even) .match-lines .line.two {
+      transform: translate(0, -100%);
+    }
+
+    .column:first-child .match-lines.alt {
+      display: none;
+    }
+
+    .column:last-child .match-lines {
+      display: none;
+    }
+
+    .column:last-child .match-lines.alt {
+      display: block;
+    }
+
+    .column:nth-child(2) .match-lines .line.two {
+      height: 88px;
+    }
+
+    .column:nth-child(3) .match-lines .line.two {
+      height: 175px;
+    }
+
+    .column:nth-child(4) .match-lines .line.two {
+      height: 262px;
+    }
+
+    .column:nth-child(5) .match-lines .line.two {
+      height: 349px;
+    }
+
+    .theme-dark {
+      background: #0e1217;
+      border-color: #040607;
+    }
+
+    .theme-dark .match-lines .line {
+      background: #36404e;
+    }
+
+    .theme-dark .team {
+      background: #182026;
+      border-color: #232c36;
+      color: #6b798c;
+    }
+
+    .theme-dark .winner-top .match-top,
+    .theme-dark .winner-bottom .match-bottom {
+      background: #232c36;
+      color: #e3e8ef;
+      border-color: #36404e;
+      z-index: 1;
+    }
+
+    .theme-dark .winner-top .match-top .score,
+    .theme-dark .winner-bottom .match-bottom .score {
+      color: #03d9ce;
+    }
+
+    .theme-dark .match .seed {
+      font-size: 12px;
+      min-width: 10px;
+    }
+
+    .theme-dark .match .score {
+      font-size: 14px;
+    }
+
+    .theme-dark-trendy {
+      background: #2b5876;
+      background: -webkit-linear-gradient(to right, #171721, #122b29);
+      background: linear-gradient(to right, #171721, #122b29);
+      border-color: #040607;
+    }
+
+    .theme-dark-trendy .match-lines .line {
+      background: #36404e;
+    }
+
+    .theme-dark-trendy .team {
+      background: rgba(50, 54, 65, 0.4);
+      color: #6b798c;
+      border: 2px solid transparent;
+    }
+
+    .theme-dark-trendy .team:first-child {
+      margin-bottom: 2px;
+    }
+
+    .theme-dark-trendy .team:last-child {
+      margin-top: 2px;
+    }
+
+    .theme-dark-trendy .winner-top .match-top,
+    .theme-dark-trendy .winner-bottom .match-bottom {
+      background: #323641;
+      color: #e3e8ef;
+      z-index: 1;
+    }
+
+    .theme-dark-trendy .winner-top .match-top .score,
+    .theme-dark-trendy .winner-bottom .match-bottom .score {
+      color: #03d9ce;
+    }
+
+    .theme-dark-trendy .match {
+      margin-right: 48px;
+    }
+
+    .theme-dark-trendy .match .team .name {
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .theme-dark-trendy .match .seed {
+      display: none;
+    }
+
+    .theme-dark-trendy .match .match-top {
+      border-radius: 0;
+    }
+
+    .theme-dark-trendy .match .match-bottom {
+      border-radius: 0;
+    }
+
+    .theme-dark-trendy .match-lines {
+      opacity: 0.75;
+      right: -12px;
+    }
+
+    .theme-dark-trendy .match-lines .line {
+      background: #03d9ce;
+    }
+
+    .theme-dark-trendy .match-lines.alt {
+      left: -24px;
+    }
+
+    .theme-dark-trendy .team {
+      overflow: hidden;
+    }
+
+    .theme-dark-trendy .score:before {
+      opacity: .25;
+      position: absolute;
+      z-index: 1;
+      content: '';
+      display: block;
+      background: black;
+      min-height: 50px;
+      min-width: 70px;
+      transform: translate(-12px, 0) rotate(25deg);
+    }
+
+    .disable-image .image,
+    .disable-seed .seed,
+    .disable-name .name,
+    .disable-score .score {
+      display: none !important;
+    }
+
+    .disable-borders {
+      border-width: 0px !important;
+    }
+
+    .disable-borders .team {
+      border-width: 0px !important;
+    }
+
+    .disable-seperator .match-top {
+      border-bottom: 0px !important;
+    }
+
+    .disable-seperator .match-bottom {
+      border-top: 0px !important;
+    }
+
+    .disable-seperator .team:first-child {
+      margin-bottom: 0px;
+    }
+</style>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}" type="text/css" media="all" />
+  <link rel="stylesheet" href="{% static 'css/fontawesome-all.css'%}">
+  <link rel='stylesheet' href="{% static 'css/bootstrap.min.css' %}">
+  <link rel='stylesheet' href="{% static 'css/t1.css' %}">
+  <link rel='stylesheet' href="{% static 'css/t2.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+  <script src="{% static 'js/js1.js' %}"></script>
+  <script src="{% static 'js/js2.js' %}"></script>
+  
+</head>
+<body>
+<div class="wrap">
+    <nav class="navbar navbar-expand-lg navbar-light shift">
+      <div class="logo">
+        <h1>
+          <a class="navbar-brand" href="/home">
+            <img src="{% static 'images/mepco.png' %}" alt="logo" height=50>
+          </a>
+        </h1>
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/home"style="color: #000;">Home
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/results" style="color: #000;"
+              >Fixtures and Results</a>
+              </li>
+            
+              <li class=" nav-item">
+              <a class="nav-link" href="/standings" style="color: #000;">Overall Standings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin" style="color: #000;">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <hr>
+  <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

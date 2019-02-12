@@ -1,0 +1,533 @@
+{% extends 'results/layout.html' %}
+{% load static %}
+<head>
+</head>
+{% block content%}
+{% if game == 'null' or game == 'wenbadmiton' or game == 'wenballbadmiton' or game == 'wenbasketball' or game == 'wenchess' or game == 'wenkhokho' or game == 'wentabletennis' or game == 'wenvolleyball' or game == 'wenthrowball'%}
+  <div id="fixture_men" style="display: none;">
+
+{% else %}
+  <div id="fixture_men">
+{% endif %}
+
+  <div>
+
+  <div class="bracket theme-dark-trendy disable-image" style="width: 70%; float: left;" >
+
+  <div class="column one">
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 1 %}
+            <span class="name">{{result.team1}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match|first == 0 %}
+            <span class="name">TBA</span>
+        {% endif %}
+      </div>
+      
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+    
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 2 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.1 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      
+      <div class="match-top team">
+        <span class="image"></span>
+        {% for result in results %}
+          {% if result.match_number == 2 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.1 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+    
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 3 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.2 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 3 %}
+
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.2 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+
+      </div>
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+    
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 4 %}
+            <span class="name">{{result.team1}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.3 == 0 %}
+            <span class="name">TBA</span>
+        {% endif %}
+      </div>
+      
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column two">
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 5 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.4 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 5 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.4 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+    
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 6 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.5 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 6 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.5 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column three">
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 7 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.6 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+     
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+       <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 7 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.6 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+    </div>
+  
+ </div>      
+  </div>
+</div>     
+<div class="podium" style=" margin: 1%; float: right;">
+      <h1 style="color: black;">RESULT</h1>
+    <table id="ladder">
+      <tr>
+      {% if match.6 == 0 %}
+        <td><div id="podium1"><h3><b>TBA</b></h3></div></td>
+        <td><div id="podium0"><h3><b>TBA</b></h3></div></td>
+      {% else %}
+        {% for result in results %}
+          {% if result.match_number == 7 %}
+            {% if result.team1 == result.winner %}
+              <td><div id="podium1" class="text-uppercase text-justify"><h3><b>&nbsp;{{result.team2}}</b></h3></div></td>
+            {% else %}
+              <td><div id="podium1" class="text-uppercase text-justify"><h3><b>&nbsp;{{result.team1}}</b></h3></div></td>
+            {% endif %}
+            <td><div id="podium0" class="text-uppercase text-justify"><h3><b>&nbsp;{{result.winner}}</b></h3></div></td>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if match.7 == 0 %}
+        <td><div id="podium2"><h3><b>TBA</b></h3></div></td>
+      {% else %}
+        {% for result in results  %}
+          {% if result.match_number == 8 %}
+            <td><div id="podium2" class="text-uppercase text-justify"><h3><b>&nbsp;{{result.winner}}</b></h3></div></td>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      </tr>
+   </table>
+  </div>  
+  <div class="bracket theme-dark-trendy disable-image" style="float: left; z-index:1; width:70%;">   
+    <h3 style="color : white; font: sans-serif"><br>&nbsp;&nbsp;Third Place match&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+ 
+   <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 8 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.1 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      </div>
+      <div class="match winner-top">
+      <div class="match-top team">
+        <span class="image"></span>
+        {% for result in results %}
+          {% if result.match_number == 8 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.1 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+  </div>
+      
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+   
+    </div>
+   
+ </div>
+  </div>
+  
+
+
+
+
+    
+
+{% if game == 'null' or game == 'menbadmiton' or game == 'menballbadmiton' or game == 'menbasketball' or game == 'menchess' or game == 'menkhokho' or game == 'mentabletennis' or game == 'menvolleyball' or game == 'mencricket' or game == 'menfootball' or game == 'menhandball' or game == 'menkabaddi' or game == 'menhockey'%}
+  <div id="fixture_women" style="display: none;">
+{% else %}
+  <div id="fixture_women">
+{% endif %}
+  <div>
+   <div class="bracket theme-dark-trendy disable-image" style="width: 60%; float: left;" >
+  <div class="column one">
+    
+    <div class="match winner-top">
+      <div class="match-top team">
+        
+        {% for result in results %}
+          {% if result.match_number == 1 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.0 == 0 %}
+            <span class="name">TBA</span>
+        {% endif %}
+      </div>
+      
+      <div class="match-top team">
+        <span class="image"></span>
+  
+        {% for result in results %}
+          {% if result.match_number == 1 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.0 == 0 %}
+            <span class="name">TBA</span>
+        {% endif %}
+      </div>
+      
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+    
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 2 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.1 == 0 %}
+            <span class="name">TBA</span>
+        {% endif %}
+      </div>
+      <div class="match-top team">
+        
+        {% for result in results %}
+          {% if result.match_number == 2 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.1 == 0 %}
+            <span class="name">TBA</span>
+        {% endif %}
+      </div>
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+    
+    
+      
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+  
+  
+  <div class="column two">
+    <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 3 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.2 == 0 %}
+            <span class="name">TBA</span>
+        {% endif %}
+      </div>
+      <div class="match-top team">
+       
+        {% for result in results %}
+          {% if result.match_number == 3 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.2 == 0 %}
+            <span class="name">TBA</span>
+        {% endif %}
+      </div>
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+    </div>
+    
+    
+    </div>
+  </div>
+   
+  
+      <div class="match-lines">
+        <div class="line one"></div>
+        <div class="line two"></div>
+      </div>
+      <div class="match-lines alt">
+        <div class="line one"></div>
+      </div>
+   
+    </div>
+     <div class="podium" style=" margin: 1%; float: right;">
+      <h1 style="color: black;">RESULT</h1>
+    <table id="ladder">
+      <tr>
+      {% if match.2 == 0 %}
+        <td><div id="podium1"><h3><b>TBA</b></h3></div></td>
+        <td><div id="podium0"><h3><b>TBA</b></h3></div></td>
+      {% else %}
+        {% for result in results %}
+          {% if result.match_number == 3 %}
+            {% if result.team1 == result.winner %}
+              <td><div id="podium1" class="text-uppercase text-justify"><h3>&nbsp;&nbsp;<b>{{result.team2}}</b></h3></div></td>
+            {% else %}
+              <td><div id="podium1" class="text-uppercase text-justify"><h3>&nbsp;&nbsp;<b>{{result.team1}}</b></h3></div></td>
+            {% endif %}
+            <td><div id="podium0" class="text-uppercase text-justify"><h3>&nbsp;&nbsp;<b>{{result.winner}}</b></h3></div></td>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if match.3 == 0 %}
+        <td><div id="podium2"><h3><b>TBA</b<</h3></div></td>
+      {% else %}
+        {% for result in results  %}
+          {% if result.match_number == 4 %}
+            <td><div id="podium2" class="text-uppercase text-justify"><h3>&nbsp;&nbsp;<b>{{result.winner}}</b></h3></div></td>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      </tr>
+   </table>
+  </div> 
+   <div class="bracket theme-dark-trendy disable-image" style="float: left; z-index:1; width:60%;">   
+    <h3 style="color : white;"><br>&nbsp;&nbsp;Third Place match&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+ 
+   <div class="match winner-top">
+      <div class="match-top team">
+        {% for result in results %}
+          {% if result.match_number == 4 %}
+            <span class="name">{{result.team1}}</span>
+            <span class="score">{{result.team1_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.1 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+      </div>
+      <div class="match winner-top">
+      <div class="match-top team">
+        <span class="image"></span>
+        {% for result in results %}
+          {% if result.match_number == 4 %}
+            <span class="name">{{result.team2}}</span>
+            <span class="score">{{result.team2_score}}</span>
+          {% endif %}
+        {% endfor %}
+        {% if match.1 == 0 %}
+            <span class="name">TBA</span>
+            <span class="score">-</span>
+        {% endif %}
+      </div>
+  </div>
+       
+  </div>
+    </div>   
+  </div>
+  </div>
+{% endblock %}
